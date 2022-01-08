@@ -24,6 +24,13 @@ public class PatentDao {
         return (Patent) template.opsForHash().get(HASH_KEY, id);
     }
 
+    /**
+     * Returns a Patent Object by its patent choosed
+     * in the full list taked from Redis
+     *
+     * @param  patent   the patent to choose
+     * @return          the Patent finded.
+     */
     public Patent findPatentByPatent(String patent){
         List<Patent> patents = template.opsForHash().values(HASH_KEY);
         Patent resultPatent = patents.stream()

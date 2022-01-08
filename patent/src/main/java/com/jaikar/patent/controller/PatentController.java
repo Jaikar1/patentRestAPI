@@ -31,7 +31,14 @@ public class PatentController {
     }
 
     @GetMapping("")
-    public void savePatents(){
+    /**
+     * Generate all the Patents objects based in the
+     * requeriment who says that we should have
+     * the necessary Patents to approach [AAAA000, AAAA001... ZZZZ999]
+     *
+     * @return  String noticing that the process finished
+     */
+    public String savePatents(){
         Map<Integer, Patent> patentsMap = new HashMap<>();
         int id = 1;
 
@@ -50,5 +57,6 @@ public class PatentController {
         }
         dao.savePatents(patentsMap);
         System.out.println("Finished");
+        return "Finished";
     }
 }
