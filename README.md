@@ -9,7 +9,7 @@ Patent es un API desarrollada con Spring Framework para el consumo de patentes.
 - Facil inicialización mediante Docker compose y Shell
 - Solamente disponible en Linux
 
-## Tech
+## Tecnologías
 
 PatentAPI usa un gran número de proyectos OpenSource como:
 
