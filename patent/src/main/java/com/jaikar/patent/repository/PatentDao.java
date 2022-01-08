@@ -24,6 +24,7 @@ public class PatentDao {
         return (Patent) template.opsForHash().get(HASH_KEY, id);
     }
 
+    
     public Patent findPatentByPatent(String patent){
         List<Patent> patents = template.opsForHash().values(HASH_KEY);
         Patent resultPatent = patents.stream()

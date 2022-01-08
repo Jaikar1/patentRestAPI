@@ -1,8 +1,11 @@
 package com.jaikar.patent.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
+import org.springframework.core.env.Environment;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -13,12 +16,16 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 @Configuration
 @EnableRedisRepositories
 public class RedisConfig {
+    @Value("${spring.redis.host}")
+    private String redisHost;
+    @Value("${spring.redis.port}")
+    private Integer redisPort;
 
     @Bean
     public JedisConnectionFactory connectionFactory(){
         RedisStandaloneConfiguration config = new RedisStandaloneConfiguration();
-        config.setHostName("redis");
-        config.setPort(6379);
+        config.setHostName(redisHost);
+        config.setPort(redisPort);
         return new JedisConnectionFactory(config);
     }
 
